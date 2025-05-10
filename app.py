@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 app = Flask(__name__)
-
 model = GPT2LMHeadModel.from_pretrained("gpt2")
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 
@@ -17,3 +16,6 @@ def generate():
         return jsonify({"response": response})
     else:
         return jsonify({"error": "No prompt provided"}), 400
+
+if __name__ == '__main__':
+    app.run(debug=True)
